@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+    <script>
+      $(function () {
+        var menu = $("<ul>").prependTo($("body"))
+        $("body > div").each(function () {
+          var div = this
+          var heading = $(this).find("h2").text()
+          menu.append($("<li>").text(heading).click(function () {
+            $("body > div").css({ display: "none" })
+            $(div).css({ display: "block" })
+            $("body > ul li").removeClass("current")
+            $(this).addClass("current")
+          }))
+        })
+        $("body > ul > :first-child").click()
+      })
+    </script>
+    <style>
+      body > ul li.current
+      { font-weight: bold }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h2>Heading A</h2>
+      <p>Content A</p>
+    </div>
+    <div>
+      <h2>Heading B</h2>
+      <p>Content B</p>
+    </div>
+    <div>
+      <h2>Heading C</h2>
+      <p>Content C</p>
+    </div>
+  </body>
+</html>
